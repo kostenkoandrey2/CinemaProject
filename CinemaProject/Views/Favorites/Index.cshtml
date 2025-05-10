@@ -1,0 +1,12 @@
+﻿@model IEnumerable<UserFavorite>
+@{
+    ViewData["Title"] = "Обране";
+}
+<h2>Обрані фільми</h2>
+@foreach (var fav in Model)
+{
+    <div>
+        <h3>@fav.Movie.Title</h3>
+        <a href="@Url.Action("Remove", "Favorites", new { movieId = fav.Movie.Id })">Видалити</a>
+    </div>
+}

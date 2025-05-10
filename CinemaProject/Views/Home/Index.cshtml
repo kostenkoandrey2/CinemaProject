@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Movie>
+@{
+    ViewData["Title"] = "Головна";
+}
+<h2>Актуальні фільми</h2>
+<form method="get">
+    <input type="text" name="search" placeholder="Пошук за назвою" />
+    <button type="submit">Пошук</button>
+</form>
+<div class="movies">
+    @foreach (var movie in Model)
+    {
+        <div>
+            <img src="@movie.PosterUrl" alt="@movie.Title" width="150" />
+            <h3>@movie.Title (@movie.ReleaseYear)</h3>
+            <p>@movie.Description</p>
+            <p>Рейтинг: @movie.Rating</p>
+            <a href="@Url.Action("Details", "Movies", new { id = movie.Id })">Детальніше</a>
+        </div>
+    }
+</div>

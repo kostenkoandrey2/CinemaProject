@@ -1,0 +1,12 @@
+﻿@model Movie
+<h2>Редагувати фільм</h2>
+<form asp-action="EditMovie" method="post">
+    <input type="hidden" asp-for="Id" />
+    <label>Назва: <input asp-for="Title" /></label>
+    <label>Опис: <textarea asp-for="Description"></textarea></label>
+    <label>URL постера: <input asp-for="PosterUrl" /></label>
+    <label>Рік: <input asp-for="ReleaseYear" /></label>
+    <label>Рейтинг: <input asp-for="Rating" /></label>
+    <label>URL трейлера: <input asp-for="TrailerUrl" /></label>
+    <button type="submit">Оновити</button>
+</form>

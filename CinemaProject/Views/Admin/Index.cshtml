@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Movie>
+<h2>Адмінпанель — Фільми</h2>
+<a href="@Url.Action("CreateMovie")">Додати фільм</a>
+<table>
+    <tr><th>Назва</th><th>Дії</th></tr>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.Title</td>
+            <td>
+                <a href="@Url.Action("EditMovie", new { id = m.Id })">Редагувати</a> |
+                <a href="@Url.Action("DeleteMovie", new { id = m.Id })">Видалити</a>
+            </td>
+        </tr>
+    }
+</table>

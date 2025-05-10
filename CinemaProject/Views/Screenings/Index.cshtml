@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Screening>
+@{
+    ViewData["Title"] = "Сеанси";
+}
+<h2>Розклад сеансів</h2>
+<form method="get">
+    <label>Дата: <input type="date" name="date" /></label>
+    <label>
+        Час:
+        <select name="time">
+            <option value="">Усі</option>
+            <option value="morning">Ранок</option>
+            <option value="evening">Вечір</option>
+        </select>
+    </label>
+    <button type="submit">Фільтрувати</button>
+</form>
+<table>
+    <thead>
+        <tr><th>Фільм</th><th>Час</th><th>Ціна</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Movie.Title</td>
+                <td>@s.StartTime</td>
+                <td>@s.TicketPrice грн</td>
+            </tr>
+        }
+    </tbody>
+</table>

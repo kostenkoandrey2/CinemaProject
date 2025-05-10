@@ -1,0 +1,19 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = Model.Title;
+}
+<h2>@Model.Title</h2>
+<img src="@Model.PosterUrl" alt="@Model.Title" width="200" />
+<p>@Model.Description</p>
+<p>Жанри: @string.Join(", ", Model.MovieGenres.Select(g => g.Genre.Name))</p>
+<p>Рік: @Model.ReleaseYear</p>
+<p>Рейтинг: @Model.Rating</p>
+<p><a href="@Model.TrailerUrl" target="_blank">Дивитися трейлер</a></p>
+<p>Актори: @string.Join(", ", Model.MovieActors.Select(a => a.Actor.FullName))</p>
+@if (User.Identity.IsAuthenticated)
+{
+    <form method="post" asp-controller="Favorites" asp-action="Add">
+        <input type="hidden" name="movieId" value="@Model.Id" />
+        <button type="submit">Додати в обране</button>
+    </form>
+}
